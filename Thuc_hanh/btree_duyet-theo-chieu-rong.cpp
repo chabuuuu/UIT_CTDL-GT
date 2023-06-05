@@ -77,7 +77,6 @@ class Node {
 }; //End of Solution
 
 int main() {
-    
     Solution myTree;
     Node* root = NULL;
     
