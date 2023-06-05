@@ -48,7 +48,7 @@ void CalculateDegree(Graph& G, int u)
     // Tính nửa bậc ngoài
     Node* currentNode = G.arr[u].head;
 
-    if (currentNode == NULL){
+    if (G.arr[u] == NULL){
         cout<<"No find";
         return;
     }
