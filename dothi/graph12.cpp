@@ -31,7 +31,6 @@ for (int i = 0; i < e; i++){
 int find;
 cin>>find;
 bool check = false;
-cout<<number_list[5].size();
 
 for (int i = 0 ; i < v ; i++){
      
