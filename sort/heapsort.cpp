@@ -39,7 +39,7 @@ void Heapify(vector<int> &a, int heapSize, int i, int &dem) {
 
 
 
-void buildHeap(vector<int> &array, int n, int &count) {
+void buildHeap (vector<int> &array, int n, int &count) {
 	int heapSize = n;
 	for (int i = n/2 - 1; i >= 0; i--)
 		Heapify(array, heapSize, i,count);
@@ -50,10 +50,6 @@ void Sort(vector<int> &array) {
 
 
 	int heapSize= n;
-
-
-
-
 	cout<<"\nN="<<heapSize<<":\t";
     for (int i = 0; i < array.size(); i++)
         cout << array[i] << "\t";

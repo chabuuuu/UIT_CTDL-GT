@@ -26,62 +26,94 @@ node* CreateNode(int x)
 }
 
 
-bool IsPrime(int n) {
-    if (n <= 1)
-        return false;
+bool isPrime(int x)
+{
+    if (x<2) 
+    {
+    return false;    
+        
+    }
 
-    for (int i = 2; i < n; i++) {
-        if (n % i == 0)
+
+
+    if (x==2) return true;
+
+    for (int i=2;i<x;i++)
+    {
+        if (x%i==0)
             return false;
     }
-
     return true;
 }
-
-bool IsExist(Stack s, int x) {
-    node* p = s.head;
-    while (p != nullptr) {
-        if (p->info == x)
-            return true;
-        p = p->next;
-    }
-    return false;
-}
-
-void Push(Stack& s, int x) {
-    if (s.head == nullptr) {
-        s.head = CreateNode(x);
-        s.tail = s.head;
+void Push(Stack &s, node *p) { // AddHead
+    if (s.head == NULL) {
+        s.head = p;
+        s.tail = p;
     }
     else {
-        node* newNode = CreateNode(x);
-        s.tail->next = newNode;
-        s.tail = newNode;
+        p->next = s.head;
+        s.head = p;
     }
 }
-
-void CreateStack(Stack& s) {
-    int x;
-    cin >> x;
-
-    while (x != -1) {
-        if (IsPrime(x) && !IsExist(s, x)) {
-            Push(s, x);
-        }
-        cin >> x;
+int check(Stack l, int x)
+{
+    if (l.head == NULL)
+        return 1;
+    for (node*p = l.head; p!= NULL; p=p->next)
+    {
+        if (p->info==x)
+            return 0;
     }
+    return 1;
 }
 
-void PrintStack(Stack s) {
-    if (s.head == nullptr) {
-        cout << "No SNT" << endl;
+void swap(Stack&l, int x)
+{
+    for (node*p = l.head; p!= NULL; p=p->next)
+    {
+        if (p->info==x)
+            p->info =-1;
+    }
+}
+void CreateStack (Stack &l)
+{
+    int k;
+do{
+cin>>k;
+if (k!=-1)
+{
+if (isPrime(k)==true)
+{
+    if (check(l,k)==1)
+    {
+        node*p= CreateNode(k);
+        Push(l,p);
+    }
+    else
+    {
+        swap(l,k);
+        node*p= CreateNode(k);
+        Push(l,p);
+    }
+}
+}
+    }while(k!=-1);
+}
+void PrintStack(Stack l)
+{
+    if (l.head==NULL)
+    {
+        cout<<"No SNT";
         return;
     }
-
-    node* p = s.head;
-    while (p != nullptr) {
-        cout << p->info << "\t";
-        p = p->next;
+    for(node*p = l.head; 
+    p!=NULL; 
+    p=p->next)
+    {
+        if (p->info!=-1){
+              cout<<p->info<<"\t";
+        }
+          
     }
 }
 
